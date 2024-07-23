@@ -1,4 +1,4 @@
-import { CANCEL_ORDER, CREATE_ORDER, GET_OPEN_ORDER } from ".";
+import { CANCEL_ORDER, CREATE_ORDER, GET_OPEN_ORDER, GET_DEPTH } from ".";
 
 export type OrderData = {
 
@@ -23,6 +23,11 @@ export type OrderData = {
     type: typeof GET_OPEN_ORDER,
     data: {
         userID: string,
+        market: string
+    }
+} | {
+    type: typeof GET_DEPTH,
+    data: {
         market: string
     }
 }
