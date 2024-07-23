@@ -2,6 +2,8 @@ import { Router } from "express";
 
 export const tradeRouter = Router();
 
-tradeRouter.get("/", (req,res) => {
-    res.send("this is trade route");
+tradeRouter.get("/", async (req,res) => {
+    const { market } = req.query;
+    //get the data from db 
+    res.json({})
 })
