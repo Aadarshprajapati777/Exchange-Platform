@@ -16,10 +16,10 @@ app.use(express.json())
 
 
 //routing
+app.use("/api/v1/ticker", tickerRouter);
 app.use("/api/v1/order", orderRouter);
 app.use("/api/v1/trade", tradeRouter);
 app.use("/api/v1/depth", depthRouter);
-app.use("/api/v1/ticker", tickerRouter);
 app.use("/api/v1/kline", klineRouter);
 
 
