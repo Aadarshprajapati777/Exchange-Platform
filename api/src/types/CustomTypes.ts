@@ -12,13 +12,11 @@ export type OrderData = {
         side: "buy || sell";
         price: number;
         userID: string;
-    } | {
-        type: typeof CANCEL_ORDER,
-        data: {
-            keys: "values"
-        }
+    } 
+} | {
+    type: typeof CANCEL_ORDER,
+    data: {
+        orderID: string,
+        market: string
     }
-    
-
-
 }
