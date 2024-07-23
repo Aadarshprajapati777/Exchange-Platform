@@ -1,7 +1,17 @@
 import { Router } from "express";
+import { RedisManager } from "../RedisManager";
+import { GET_DEPTH } from "../types";
 
 export const depthRouter = Router();
 
-depthRouter.get("/", (req,res) => {
-    res.send("this is depth route")
+depthRouter.get("/", async (req,res) => {
+   const { symbol } = req.query;
+   const response = await RedisManager.getInstance().sendToQueueAndPubSub({
+    type: GET_DEPTH,
+    data: {
+        market: symbol as string
+    }
+   })
+
+   return res.json(response.payload);
 })
