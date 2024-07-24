@@ -58,7 +58,7 @@ export function Depth({ market }: {market: string}) {
 
                 for (let j = 0; j < data.asks.length; j++)  {
                     if (Number(data.asks[j][1]) !== 0 && !asksAfterUpdate.map(x => x[0]).includes(data.asks[j][0])) {
-                        asksAfterUpdate.push(data.asks[j]);
+                        asksAfterUpdate.push(data.asks[j]); 
                         break;
                     }
                 }
