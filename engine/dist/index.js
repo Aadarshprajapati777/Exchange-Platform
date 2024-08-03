@@ -10,16 +10,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const redis_1 = require("redis");
+const Engine_1 = require("./trade/Engine");
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
-        console.log("in main function");
+        const engine = new Engine_1.Engine();
         const redisClient = (0, redis_1.createClient)();
-        const response = yield redisClient.connect();
-        if (!response) {
-            throw new Error("Failed to connect to Redis");
-        }
-        else {
-            console.log("connected to redis");
+        yield redisClient.connect();
+        console.log("connected to redis");
+        while (true) {
+            const response = yield redisClient.rPop("message");
+            console.log("response in engine index.js : ", response);
+            if (!response) {
+                console.log("not found response");
+            }
+            else {
+                engine.process(JSON.parse(response));
+            }
         }
     });
 }

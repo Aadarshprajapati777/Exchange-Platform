@@ -21,7 +21,7 @@ export class RedisManager {
         return this.instance;
     }
 
-    public sendToQueueAndPubSub(data: OrderData){
+    public sendToQueueAndPubSub(message: OrderData){
         return new Promise<ResponseFromOrderbook>((resolve) => {
             const id = this.createRandomClientID();
 
@@ -32,7 +32,8 @@ export class RedisManager {
                 this.pubsubClient.unsubscribe(id);
                 resolve(JSON.parse(message));
             })
-            this.queuePublisher.lPush("data", JSON.stringify({clientID: id, data}));
+            console.log("data in sendToQueueAndPubSub: ", message, id);
+            this.queuePublisher.lPush("message", JSON.stringify({message, clientId:id}));
         })
     }
     

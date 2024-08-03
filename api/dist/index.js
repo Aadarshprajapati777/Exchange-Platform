@@ -20,7 +20,7 @@ app.use("/api/v1/ticker", ticker_1.tickerRouter);
 app.use("/api/v1/order", order_1.orderRouter);
 app.use("/api/v1/trade", trade_1.tradeRouter);
 app.use("/api/v1/depth", depth_1.depthRouter);
-app.use("/api/v1/kline", kline_1.klineRouter);
+app.use("/api/v1/klines", kline_1.klineRouter);
 app.listen(port, () => {
     console.log("server is running at post " + port);
 });

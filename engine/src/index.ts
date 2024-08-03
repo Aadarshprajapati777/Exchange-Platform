@@ -1,14 +1,23 @@
-import {createClient} from "redis";
+import { createClient, } from "redis";
+import { Engine } from "./trade/Engine";
 
-async function main(){
-    console.log("in main function")
+
+async function main() {
+    const engine = new Engine(); 
     const redisClient = createClient();
-    const response = await redisClient.connect();
-    if( !response){
-        throw new Error("Failed to connect to Redis");
-    } else {
-        console.log("connected to redis");
+    await redisClient.connect();
+    console.log("connected to redis");
+
+    while (true) {
+        const response = await redisClient.rPop("message" as string);
+        console.log("response in engine index.js : ", response);
+        if (!response) {
+            console.log("not found response");
+        }  else {
+            engine.process(JSON.parse(response));
+        }        
     }
+
 }
 
 main();

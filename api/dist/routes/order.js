@@ -42,10 +42,11 @@ exports.orderRouter.delete("/", (req, res) => __awaiter(void 0, void 0, void 0, 
     return res.json(response.payload);
 }));
 exports.orderRouter.get("/open", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("req.query arsh: ", req.query.userId, req.query.market);
     const response = yield RedisManager_1.RedisManager.getInstance().sendToQueueAndPubSub({
         type: types_1.GET_OPEN_ORDER,
         data: {
-            userID: req.query.userID,
+            userID: req.query.userId,
             market: req.query.market
         }
     });

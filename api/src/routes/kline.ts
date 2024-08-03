@@ -14,7 +14,15 @@ pgClient.connect();
 export const klineRouter = Router();
 
 klineRouter.get("/", async (req, res) => {
-    const { market, interval, startTime, endTime } = req.query;
+    const { interval, startTime, endTime } = req.query;
+    const market = "TATA_INR";
+    console.log("market: ", market);
+    console.log("interval: ", interval);
+    console.log("startTime: ", startTime);
+    console.log("endTime: ", endTime);
+    if (!market || !interval || !startTime || !endTime) {
+        return res.status(400).send('Invalid query params');
+    }   
 
     let query;
     switch (interval) {
@@ -22,7 +30,7 @@ klineRouter.get("/", async (req, res) => {
             query = `SELECT * FROM klines_1m WHERE bucket >= $1 AND bucket <= $2`;
             break;
         case '1h':
-            query = `SELECT * FROM klines_1m WHERE  bucket >= $1 AND bucket <= $2`;
+            query = `SELECT * FROM klines_1h WHERE  bucket >= $1 AND bucket <= $2 LIMIT 50`;
             break;
         case '1w':
             query = `SELECT * FROM klines_1w WHERE bucket >= $1 AND bucket <= $2`;
@@ -32,9 +40,6 @@ klineRouter.get("/", async (req, res) => {
     }
 
     try {
-
-        console.log("start time: ",(new Date (Number(startTime) * 1000 ) as unknown as string));
-        console.log("end time: ",(new Date (Number(endTime) * 1000 ) as unknown as string));
 
         //@ts-ignore
         const result = await pgClient.query(query, [(new Date (Number(startTime) * 1000 ) as unknown as string), (new Date (Number(endTime) * 1000 ) as unknown as string)]);

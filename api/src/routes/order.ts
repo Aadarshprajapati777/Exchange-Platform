@@ -35,10 +35,11 @@ orderRouter.delete("/", async (req,res) => {
 })
 
 orderRouter.get("/open", async (req,res) => {
+    console.log("req.query arsh: ", req.query.userId, req.query.market);
     const response = await RedisManager.getInstance().sendToQueueAndPubSub({
         type: GET_OPEN_ORDER,
         data: {
-            userID: req.query.userID as string,
+            userID: req.query.userId as string,
             market: req.query.market as string
         }
     })
