@@ -1,7 +1,7 @@
 
-# Distributed and Scalable Exchange Platform
+#  Scalable Exchange Platform
 
-Welcome to the Distributed and Scalable Exchange Platform project! This platform is currently under development and is designed to handle high volumes of user traffic and data efficiently. The architecture employs a microservices approach with independent scaling capabilities, ensuring that each component can grow as the number of users increases.
+Welcome to the Exchange Platform project! This platform is currently under development and is designed to handle high volumes of user traffic and data efficiently. The architecture employs a microservices approach with independent scaling capabilities, ensuring that each component can grow as the number of users increases.
 
 ## Key Components
 
