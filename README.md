@@ -84,7 +84,8 @@ For any questions or feedback, please reach out to geekaadarsh.dev@gmail.com
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![exchange](https://github.com/user-attachments/assets/4ca7fca2-787f-4e9d-a20b-618172d38cd8)
+
 
 
 ## Support
@@ -94,7 +95,7 @@ Thank you for your interest in the Distributed and Scalable Exchange Platform! Y
 
 ## Tech Stack
 
-**Client:** Next-JS 14, Tailwind CSS, lightweight-chart
+**Frontend:** Next-JS 14, Tailwind CSS, lightweight-chart
 
-**Server:** Node, Express, Redis Queue, Redis PubSub, docker, PostgreSQL, Next-JS backend, typescript, websocket, vitest
+**Backend:** Node, Express, Redis Queue, Redis PubSub, docker, PostgreSQL, Next-JS backend, typescript, websocket, vitest
 
